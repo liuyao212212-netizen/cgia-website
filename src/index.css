@@ -1,0 +1,252 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: hsl(50 100% 70%);
+  --color-gold-light: hsl(54 100% 75%);
+  --color-gold-dark: hsl(45 100% 55%);
+  --color-gold-muted: hsl(50 60% 50%);
+  --color-glass: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --color-glass-hover: rgba(255, 255, 255, 0.08);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: hsl(50 100% 70% / 0.3);
+    color: #fff;
+  }
+}
+
+@layer utilities {
+  .text-gold {
+    color: hsl(50 100% 70%);
+  }
+
+  .bg-gold {
+    background-color: hsl(50 100% 70%);
+  }
+
+  .border-gold {
+    border-color: hsl(50 100% 70%);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glass-card-hover:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: hsl(50 100% 70% / 0.3);
+    transform: translateY(-4px);
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 30px hsl(50 100% 70% / 0.15), 0 0 60px hsl(50 100% 70% / 0.05);
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(50 100% 70%) 0%, hsl(54 100% 75%) 50%, hsl(45 100% 60%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-gold {
+    background: linear-gradient(135deg, hsl(50 100% 70%) 0%, hsl(54 100% 75%) 100%);
+  }
+
+  .gold-border-glow {
+    border: 1px solid hsl(50 100% 70% / 0.3);
+    box-shadow: 0 0 20px hsl(50 100% 70% / 0.1), inset 0 0 20px hsl(50 100% 70% / 0.05);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(50 100% 70% / 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(50 100% 70% / 0.5);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ============================================
+   Animated Gradient Button (Uiverse dexter-st)
+   ============================================ */
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes gradient-rotation {
+  0%   { --gradient-angle: 0deg; }
+  100% { --gradient-angle: 360deg; }
+}
+
+.btn-wrapper {
+  position: relative;
+  display: inline-flex;
+  border-radius: 50px;
+  overflow: hidden;
+  padding: 2px;
+  isolation: isolate;
+}
+
+.btn-light {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    hsl(50 100% 70% / 0.12) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gradient-layer {
+  position: absolute;
+  inset: -50%;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    transparent 0%,
+    hsl(50 100% 70% / 0.9) 8%,
+    hsl(54 100% 75%) 12%,
+    hsl(45 100% 60% / 0.9) 16%,
+    transparent 24%,
+    transparent 100%
+  );
+  animation: gradient-rotation var(--duration, 20s) linear infinite;
+  animation-delay: var(--delay, 0s);
+  filter: blur(6px);
+  z-index: 0;
+}
+
+.gradient-btn {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: hsl(0 0% 3%);
+  color: transparent;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background 0.3s ease;
+}
+
+.gradient-btn:hover {
+  background: hsl(0 0% 6%);
+}
+
+.gradient-btn-sm {
+  padding: 8px 20px;
+  font-size: 14px;
+}
+
+.gradient-btn-md {
+  padding: 12px 28px;
+  font-size: 16px;
+}
+
+.gradient-btn-lg {
+  padding: 14px 36px;
+  font-size: 17px;
+}
+
+.text-overlay {
+  position: absolute;
+  inset: 2px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: hsl(50 100% 70%);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  border-radius: 50px;
+}
+
+.text-overlay.gradient-btn-sm {
+  font-size: 14px;
+}
+
+.text-overlay.gradient-btn-md {
+  font-size: 16px;
+}
+
+.text-overlay.gradient-btn-lg {
+  font-size: 17px;
+}
