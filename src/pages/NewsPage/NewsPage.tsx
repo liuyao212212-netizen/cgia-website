@@ -38,7 +38,7 @@ export default function NewsPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg text-[hsl(50_100%_70%)] max-w-2xl mx-auto leading-relaxed"
           >
             了解CGIA最新进展与GEO行业前沿资讯
           </motion.p>

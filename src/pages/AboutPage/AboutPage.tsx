@@ -48,7 +48,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg text-[hsl(50_100%_70%)] max-w-2xl mx-auto leading-relaxed"
           >
             深度共建 GEO 生态，赋能 AI 营销时代
           </motion.p>
