@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, Send, CheckCircle, Building2, User, Phone, Mail, Briefcase, Check } from 'lucide-react'
+import { Send, CheckCircle, Building2, User, Phone, Mail, Briefcase, Check } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import AnimatedSection from '../../components/AnimatedSection'
 
