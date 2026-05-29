@@ -18,7 +18,7 @@ const benefits = [
   {
     icon: Award,
     title: '联盟证书/授牌颁发',
-    description: '"中国GEO创新联盟会员"实体牌匾与专属证书，彰显品牌权威背书。',
+    description: '实体牌匾与专属证书，彰显品牌权威背书。',
   },
   {
     icon: Newspaper,
