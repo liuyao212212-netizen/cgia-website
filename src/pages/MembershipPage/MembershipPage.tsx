@@ -11,9 +11,8 @@ import {
 } from 'lucide-react'
 import SectionTitle from '../../components/SectionTitle'
 import AnimatedSection from '../../components/AnimatedSection'
-import GradientButton from '../../components/GradientButton'
-import { membersData } from '../../data/members'
 import { Link } from 'react-router-dom'
+import { membersData } from '../../data/members'
 
 const benefits = [
   {
@@ -213,9 +212,12 @@ export default function MembershipPage() {
               以生态共建凝聚合力
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <GradientButton to="/application" size="lg">
-                立即加入 <ArrowRight className="w-5 h-5" />
-              </GradientButton>
+              <Link
+                to="/application"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl bg-[hsl(50_100%_70%)] text-black font-medium text-base hover:scale-105 transition-transform duration-300"
+              >
+                申请入会 <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </AnimatedSection>
         </div>
