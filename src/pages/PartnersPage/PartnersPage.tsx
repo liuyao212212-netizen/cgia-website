@@ -154,7 +154,7 @@ export default function PartnersPage() {
       <section className="py-16 md:py-24 relative">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(/images/bg-gold-2.jpg)` }}
+          style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/bg-gold-2.jpg)` }}
         />
         <div className="absolute inset-0 bg-black/70" />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

@@ -116,7 +116,7 @@ export default function ApplicationPage() {
       <section className="relative py-16 md:py-24 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: `url(/images/bg-gold-2.jpg)` }}
+          style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/bg-gold-2.jpg)` }}
         />
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

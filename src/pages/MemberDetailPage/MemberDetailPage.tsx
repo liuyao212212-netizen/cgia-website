@@ -112,7 +112,7 @@ export default function MemberDetailPage() {
                       </div>
                     </div>
                     <a
-                      href={`/certificates/${member.id}.pdf`}
+                      href={import.meta.env.BASE_URL + `certificates/${member.id}.pdf`}
                       download={`${member.name}_CGIA证书.pdf`}
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[hsl(50_100%_70%_/0.1)] border border-[hsl(50_100%_70%_/0.3)] text-[hsl(50_100%_70%)] text-sm font-medium hover:bg-[hsl(50_100%_70%_/0.2)] transition-colors cursor-pointer"
                     >

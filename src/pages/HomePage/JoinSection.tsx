@@ -8,7 +8,7 @@ export default function JoinSection() {
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(/images/bg-cta.jpg)` }}
+        style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/bg-cta.jpg)` }}
       />
       <div className="absolute inset-0 bg-black/70" />
 

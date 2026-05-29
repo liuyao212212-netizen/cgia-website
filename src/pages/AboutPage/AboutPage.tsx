@@ -127,7 +127,7 @@ export default function AboutPage() {
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="w-32 h-32 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
                   <img
-                    src="/images/logo-guojipinpai.png"
+                    src={import.meta.env.BASE_URL + 'images/logo-guojipinpai.png'}
                     alt="《国际品牌观察》杂志社"
                     className="w-full h-full object-contain p-2"
                     onError={(e) => {
@@ -194,7 +194,7 @@ export default function AboutPage() {
               <div className="flex flex-col items-start gap-4 mb-8">
                 <div className="w-full max-w-[280px] h-16 rounded-xl bg-white/10 flex items-center justify-center overflow-hidden px-4">
                   <img
-                    src="/images/logo-guojipinpai-wide.png"
+                    src={import.meta.env.BASE_URL + 'images/logo-guojipinpai-wide.png'}
                     alt="《国际品牌观察》杂志社"
                     className="w-full h-full object-contain"
                   />

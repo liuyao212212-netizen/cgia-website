@@ -4,7 +4,8 @@ import { Menu, X, Globe, Mail, Phone } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 // CGIA Logo - 新logo，透明底，无框
-const cgiaLogoUrl = '/images/cgia-logo-new.png'
+const BASE = import.meta.env.BASE_URL
+const cgiaLogoUrl = BASE + 'images/cgia-logo-new.png'
 
 export default function Layout() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -44,7 +45,7 @@ export default function Layout() {
       {/* 黑金背景图 */}
       <div
         className="fixed inset-0 bg-cover bg-center bg-no-repeat bg-fixed opacity-40"
-        style={{ backgroundImage: `url(/images/bg-gold-1.jpg)` }}
+        style={{ backgroundImage: `url(${BASE}images/bg-gold-1.jpg)` }}
       />
 
       {/* 背景叠加层 */}
