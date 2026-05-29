@@ -117,7 +117,7 @@ export default function MembersSection() {
                     <div className="w-16 h-16 mx-auto rounded-xl bg-[hsl(50_100%_70%_/0.1)] border border-[hsl(50_100%_70%_/0.2)] flex items-center justify-center mb-4 group-hover:bg-[hsl(50_100%_70%_/0.2)] transition-colors">
                       <Trophy className="w-8 h-8 text-[hsl(50_100%_70%)]" />
                     </div>
-                    <h3 className="text-sm font-semibold text-white mb-2 line-clamp-2">{member.name}</h3>
+                    <h3 className="text-sm font-semibold text-[hsl(50_100%_70%)] mb-2 line-clamp-2">{member.name}</h3>
                     <div className="mb-3">
                       <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-[hsl(50_100%_70%_/0.15)] text-[hsl(50_100%_70%)] border border-[hsl(50_100%_70%_/0.3)]">
                         {member.honors[0]}
