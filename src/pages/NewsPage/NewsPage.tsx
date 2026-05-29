@@ -17,10 +17,15 @@ export default function NewsPage() {
   const filteredNews = newsData.filter((news) => news.type === activeTab)
 
   return (
-    <div className="pb-20">
+    <div>
       {/* Hero */}
-      <section className="relative py-20 md:py-32">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/bg-particles.jpg)` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -44,12 +49,12 @@ export default function NewsPage() {
       <section className="py-8 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
+          <div className="grid grid-cols-4 gap-2 mb-12">
             {tabs.map((tab) => (
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
-                className={`relative px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+                className={`relative px-2 py-2 sm:px-5 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 flex items-center justify-center gap-1 sm:gap-2 ${
                   activeTab === tab.key
                     ? 'text-black'
                     : 'text-gray-400 hover:text-white bg-white/5 hover:bg-white/10'
@@ -62,8 +67,8 @@ export default function NewsPage() {
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
                 )}
-                <tab.icon className="w-4 h-4 relative z-10" />
-                <span className="relative z-10">{tab.label}</span>
+                <tab.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 relative z-10 flex-shrink-0" />
+                <span className="relative z-10 truncate">{tab.label}</span>
               </button>
             ))}
           </div>

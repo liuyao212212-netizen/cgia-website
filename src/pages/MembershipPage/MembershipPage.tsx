@@ -11,7 +11,7 @@ import {
 } from 'lucide-react'
 import SectionTitle from '../../components/SectionTitle'
 import AnimatedSection from '../../components/AnimatedSection'
-import GoldButton from '../../components/GoldButton'
+import GradientButton from '../../components/GradientButton'
 import { membersData } from '../../data/members'
 import { Link } from 'react-router-dom'
 
@@ -55,10 +55,15 @@ const benefits = [
 
 export default function MembershipPage() {
   return (
-    <div className="pb-20">
+    <div>
       {/* Hero */}
-      <section className="relative py-20 md:py-32">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/bg-particles.jpg)` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -208,15 +213,9 @@ export default function MembershipPage() {
               以生态共建凝聚合力
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <GoldButton
-                to="/application"
-                variant="primary"
-                size="lg"
-                className="rounded-full"
-                shiny
-              >
+              <GradientButton to="/application" size="lg">
                 立即加入 <ArrowRight className="w-5 h-5" />
-              </GoldButton>
+              </GradientButton>
             </div>
           </AnimatedSection>
         </div>

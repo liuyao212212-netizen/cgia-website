@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import GradientButton from '../../components/GradientButton'
+import { Link } from 'react-router-dom'
 
 export default function JoinSection() {
   return (
@@ -42,9 +42,12 @@ export default function JoinSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <GradientButton to="/application" size="lg">
-            立即加入 <ArrowRight className="w-5 h-5" />
-          </GradientButton>
+          <Link
+            to="/application"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-2xl bg-[hsl(50_100%_70%)] text-black font-medium text-base hover:scale-105 transition-transform duration-300"
+          >
+            申请入会 <ArrowRight className="w-4 h-4" />
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -21,7 +21,7 @@ export default function MemberDetailPage() {
   }
 
   return (
-    <div className="pb-20">
+    <div>
       {/* Back Button */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
         <Link

@@ -111,12 +111,12 @@ export default function ApplicationPage() {
   const labelClass = 'block text-sm font-medium text-gray-300 mb-2'
 
   return (
-    <div className="pb-20">
+    <div>
       {/* Header */}
       <section className="relative py-16 md:py-24 overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/bg-gold-2.jpg)` }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/bg-particles.jpg)` }}
         />
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
