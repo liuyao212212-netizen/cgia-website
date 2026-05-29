@@ -180,7 +180,7 @@ export default function MembershipPage() {
                     <div className="w-14 h-14 mx-auto rounded-xl bg-[hsl(50_100%_70%_/0.1)] border border-[hsl(50_100%_70%_/0.2)] flex items-center justify-center mb-4">
                       <Award className="w-7 h-7 text-[hsl(50_100%_70%)]" />
                     </div>
-                    <h3 className="text-sm font-semibold text-white mb-2 line-clamp-2">{member.name}</h3>
+                    <h3 className="text-sm font-semibold text-[hsl(50_100%_70%)] mb-2 line-clamp-2">{member.name}</h3>
                     <span className={`inline-block px-2 py-0.5 rounded text-xs ${
                       member.level === 'founding-org'
                         ? 'bg-[hsl(50_100%_70%_/0.15)] text-[hsl(50_100%_70%)]'
