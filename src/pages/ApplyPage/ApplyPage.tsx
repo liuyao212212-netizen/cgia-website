@@ -49,8 +49,8 @@ export default function ApplyPage() {
                 <div className="w-16 h-16 rounded-2xl bg-[hsl(50_100%_70%_/0.1)] border border-[hsl(50_100%_70%_/0.2)] flex items-center justify-center mb-6 group-hover:bg-[hsl(50_100%_70%_/0.2)] transition-colors">
                   <Building2 className="w-8 h-8 text-[hsl(50_100%_70%)]" />
                 </div>
-                <h2 className="text-xl md:text-2xl font-bold text-white mb-3">
-                  单位会员申请
+                <h2 className="text-xl md:text-2xl font-bold text-gradient-gold mb-3">
+                  单位申请
                 </h2>
                 <p className="text-gray-400 text-sm mb-8 leading-relaxed">
                   适用对象：企业、机构、公司
@@ -75,8 +75,8 @@ export default function ApplyPage() {
                 <div className="w-16 h-16 rounded-2xl bg-[hsl(50_100%_70%_/0.1)] border border-[hsl(50_100%_70%_/0.2)] flex items-center justify-center mb-6 group-hover:bg-[hsl(50_100%_70%_/0.2)] transition-colors">
                   <User className="w-8 h-8 text-[hsl(50_100%_70%)]" />
                 </div>
-                <h2 className="text-xl md:text-2xl font-bold text-white mb-3">
-                  个人会员（先锋个人）申请
+                <h2 className="text-xl md:text-2xl font-bold text-gradient-gold mb-3">
+                  个人申请
                 </h2>
                 <p className="text-gray-400 text-sm mb-8 leading-relaxed">
                   适用对象：行业从业者、专家、独立负责人
