@@ -6,7 +6,9 @@ import MembershipPage from './pages/MembershipPage/MembershipPage'
 import NewsPage from './pages/NewsPage/NewsPage'
 import PartnersPage from './pages/PartnersPage/PartnersPage'
 import ContactPage from './pages/ContactPage/ContactPage'
-import ApplicationPage from './pages/ApplicationPage/ApplicationPage'
+import ApplyPage from './pages/ApplyPage/ApplyPage'
+import CompanyApplyPage from './pages/ApplyPage/CompanyApplyPage'
+import PersonApplyPage from './pages/ApplyPage/PersonApplyPage'
 import MemberDetailPage from './pages/MemberDetailPage/MemberDetailPage'
 import NotFound from './pages/NotFound/NotFound'
 
@@ -20,7 +22,9 @@ export default function App() {
         <Route path="news" element={<NewsPage />} />
         <Route path="partners" element={<PartnersPage />} />
         <Route path="contact" element={<ContactPage />} />
-        <Route path="application" element={<ApplicationPage />} />
+        <Route path="application" element={<ApplyPage />} />
+        <Route path="apply/company" element={<CompanyApplyPage />} />
+        <Route path="apply/person" element={<PersonApplyPage />} />
         <Route path="members/:id" element={<MemberDetailPage />} />
         <Route path="*" element={<NotFound />} />
       </Route>
