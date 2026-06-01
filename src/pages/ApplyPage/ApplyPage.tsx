@@ -17,9 +17,9 @@ export default function ApplyPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl md:text-5xl font-bold text-white mb-4"
+            className="text-2xl sm:text-3xl md:text-5xl font-bold text-gradient-gold mb-4"
           >
-            中国GEO创新联盟 · <span className="text-gradient-gold">入会申请</span>
+            中国GEO创新联盟 · 入会申请
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}

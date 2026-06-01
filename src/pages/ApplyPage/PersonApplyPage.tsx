@@ -154,9 +154,9 @@ export default function PersonApplyPage() {
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-3xl md:text-5xl font-bold text-white mb-4"
+            className="text-2xl sm:text-3xl md:text-5xl font-bold text-gradient-gold mb-4"
           >
-            <span className="text-gradient-gold">先锋个人</span>申请
+            先锋个人申请
           </motion.h1>
         </div>
       </section>
