@@ -79,7 +79,7 @@ export default function CompanyApplyPage() {
       msg_type: 'interactive',
       card: {
         header: {
-          title: { tag: 'plain_text', content: '🏢 CGIA 单位会员申请' },
+          title: { tag: 'plain_text', content: '🏢 CGIA 单位会员入会申请' },
           template: 'gold',
         },
         elements: [

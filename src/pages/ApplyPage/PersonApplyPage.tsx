@@ -78,7 +78,7 @@ export default function PersonApplyPage() {
       msg_type: 'interactive',
       card: {
         header: {
-          title: { tag: 'plain_text', content: '👤 CGIA 先锋个人申请' },
+          title: { tag: 'plain_text', content: '👤 CGIA 先锋个人入会申请' },
           template: 'gold',
         },
         elements: [
