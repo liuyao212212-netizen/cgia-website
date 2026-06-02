@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import AnimatedSection from '../../components/AnimatedSection'
 
 // 飞书群机器人 Webhook URL
-const FEISHU_WEBHOOK_URL = ''
+const FEISHU_WEBHOOK_URL = 'https://open.feishu.cn/open-apis/bot/v2/hook/c9ffcdc0-211f-42b1-b94b-61d5d91f9800'
 
 const industryOptions = [
   '互联网/科技', '品牌/营销', '媒体/出版', 'AI/大数据',
