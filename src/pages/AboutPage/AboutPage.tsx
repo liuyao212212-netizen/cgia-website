@@ -130,11 +130,11 @@ export default function AboutPage() {
               className="mt-12 glass-card rounded-2xl p-8 md:p-12 max-w-3xl mx-auto cursor-pointer group"
             >
               <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="w-32 h-32 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                <div className="w-32 h-32 rounded-xl bg-[hsl(50_30%_92%)] flex items-center justify-center flex-shrink-0 overflow-hidden">
                   <img
                     src={import.meta.env.BASE_URL + 'images/logo-guojipinpai.png'}
                     alt="《国际品牌观察》杂志社"
-                    className="w-full h-full object-contain p-2"
+                    className="w-full h-full object-contain p-2 brightness-110"
                     onError={(e) => {
                       (e.target as HTMLImageElement).style.display = 'none'
                     }}
@@ -197,11 +197,11 @@ export default function AboutPage() {
 
               {/* Logo */}
               <div className="flex flex-col items-start gap-4 mb-8">
-                <div className="w-full max-w-[280px] h-16 rounded-xl bg-white/10 flex items-center justify-center overflow-hidden px-4">
+                <div className="w-full max-w-[280px] h-16 rounded-xl bg-[hsl(50_30%_92%)] flex items-center justify-center overflow-hidden px-4">
                   <img
                     src={import.meta.env.BASE_URL + 'images/logo-guojipinpai-wide.png'}
                     alt="《国际品牌观察》杂志社"
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain brightness-110"
                   />
                 </div>
                 <div>
