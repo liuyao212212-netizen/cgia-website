@@ -81,13 +81,6 @@ export default function NewsPage() {
         </div>
       </section>
 
-      {/* 主slogan */}
-      <section className="py-8 border-b border-white/5">
-        <p className="text-center text-gray-400 text-sm md:text-base">
-          资讯速递，一站式掌握全球数字营销风向
-        </p>
-      </section>
-
       {/* 日期倒序专题海报列表 */}
       <section className="py-12 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
