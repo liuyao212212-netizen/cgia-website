@@ -1,18 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ZoomIn } from 'lucide-react'
 import AnimatedSection from '../../components/AnimatedSection'
+import { api, type ApiNewsItem, API_BASE } from '../../api'
 
-interface DailyPost {
-  id: string
-  date: string
-  title: string
-  poster: string
-  tags: string[]
-}
-
-// 速递数据 - 按日期倒序排列
-const dailyPosts: DailyPost[] = [
+// Fallback 数据 - API 不可用时使用
+const fallbackPosts = [
   {
     id: '2026-06-02',
     date: '2026-06-02',
@@ -34,17 +27,45 @@ const dailyPosts: DailyPost[] = [
     poster: import.meta.env.BASE_URL + 'images/news-daily-20260531.jpg',
     tags: ['算法动态'],
   },
-  {
-    id: '2026-05-30',
-    date: '2026-05-30',
-    title: 'GEO行业趋势周报：数据洞察与增长机会',
-    poster: import.meta.env.BASE_URL + 'images/news-daily-20260530.jpg',
-    tags: ['AI营销', '数据洞察'],
-  },
 ]
+
+interface DisplayPost {
+  id: string
+  date: string
+  title: string
+  poster: string
+  tags: string[]
+}
+
+function toDisplayPost(item: ApiNewsItem): DisplayPost {
+  return {
+    id: String(item.id),
+    date: item.date,
+    title: item.title,
+    // API 返回的 image 是 /uploads/xxx.jpg，需拼接 API_BASE
+    poster: item.image.startsWith('http') ? item.image : `${API_BASE}${item.image}`,
+    tags: item.tags,
+  }
+}
 
 export default function NewsPage() {
   const [previewImage, setPreviewImage] = useState<string | null>(null)
+  const [posts, setPosts] = useState<DisplayPost[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function loadNews() {
+      const data = await api.getNews()
+      if (data && data.length > 0) {
+        setPosts(data.map(toDisplayPost))
+      } else {
+        // API 不可用，用 fallback
+        setPosts(fallbackPosts as DisplayPost[])
+      }
+      setLoading(false)
+    }
+    loadNews()
+  }, [])
 
   return (
     <div>
@@ -84,46 +105,62 @@ export default function NewsPage() {
       {/* 日期倒序专题海报列表 */}
       <section className="py-12 md:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-          {dailyPosts.map((post, index) => (
-            <AnimatedSection key={post.id} delay={index * 0.1}>
-              <motion.div
-                whileHover={{ y: -4 }}
-                className="relative rounded-2xl overflow-hidden glass-card group cursor-pointer"
-                onClick={() => setPreviewImage(post.poster)}
-              >
-                {/* 海报图 */}
-                <div
-                  className="w-full aspect-[16/9] bg-cover bg-center"
-                  style={{ backgroundImage: `url(${post.poster})` }}
-                />
-                {/* 渐变遮罩 */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                {/* 放大图标 */}
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center">
-                    <ZoomIn className="w-5 h-5 text-white" />
+          {loading ? (
+            // 加载中
+            <div className="flex justify-center py-20">
+              <div className="w-8 h-8 border-2 border-[hsl(50_100%_70%)] border-t-transparent rounded-full animate-spin" />
+            </div>
+          ) : posts.length === 0 ? (
+            // 无数据
+            <div className="text-center py-20">
+              <p className="text-gray-500 text-sm">暂无速递内容</p>
+            </div>
+          ) : (
+            posts.map((post, index) => (
+              <AnimatedSection key={post.id} delay={index * 0.1}>
+                <motion.div
+                  whileHover={{ y: -4 }}
+                  className="relative rounded-2xl overflow-hidden glass-card group cursor-pointer"
+                  onClick={() => setPreviewImage(post.poster)}
+                >
+                  {/* 海报图 */}
+                  <div className="w-full aspect-[16/9] relative bg-black">
+                    <img
+                      src={post.poster}
+                      alt={post.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
-                </div>
-                {/* 底部信息 */}
-                <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-gray-400 text-xs">{post.date}</span>
-                    {post.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-0.5 rounded-full bg-[hsl(50_100%_70%_/0.15)] text-[hsl(50_100%_70%)] text-[10px] font-medium"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  {/* 渐变遮罩 */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                  {/* 放大图标 */}
+                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="w-10 h-10 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center">
+                      <ZoomIn className="w-5 h-5 text-white" />
+                    </div>
                   </div>
-                  <h3 className="text-white text-base md:text-lg font-semibold">
-                    {post.title}
-                  </h3>
-                </div>
-              </motion.div>
-            </AnimatedSection>
-          ))}
+                  {/* 底部信息 */}
+                  <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-gray-400 text-xs">{post.date}</span>
+                      {post.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-0.5 rounded-full bg-[hsl(50_100%_70%_/0.15)] text-[hsl(50_100%_70%)] text-[10px] font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h3 className="text-white text-base md:text-lg font-semibold">
+                      {post.title}
+                    </h3>
+                  </div>
+                </motion.div>
+              </AnimatedSection>
+            ))
+          )}
 
           {/* 往期回顾 */}
           <div className="text-center pt-8">

@@ -1,9 +1,31 @@
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import AnimatedSection from '../../components/AnimatedSection'
+import { api, type ApiNewsItem, API_BASE } from '../../api'
 
 export default function NewsSection() {
+  const [latestPost, setLatestPost] = useState<ApiNewsItem | null>(null)
+
+  useEffect(() => {
+    async function loadLatest() {
+      const data = await api.getNews()
+      if (data && data.length > 0) {
+        setLatestPost(data[0]) // 最新的那条
+      }
+    }
+    loadLatest()
+  }, [])
+
+  // 精选速递海报图：API 有数据就用最新的，没有就用默认
+  const featuredImage = latestPost
+    ? (latestPost.image.startsWith('http') ? latestPost.image : `${API_BASE}${latestPost.image}`)
+    : `${import.meta.env.BASE_URL}images/news-poster-featured.jpg`
+
+  const featuredTitle = latestPost?.title || '今日精选速递'
+  const featuredTags = latestPost?.tags || ['跨境GEO', 'AI营销', '算法动态']
+
   return (
     <section className="relative py-20 md:py-32 overflow-hidden">
       <div className="absolute inset-0 bg-black/40" />
@@ -57,25 +79,28 @@ export default function NewsSection() {
                 whileHover={{ y: -4 }}
                 className="relative rounded-2xl overflow-hidden glass-card group cursor-pointer"
               >
-                <div
-                  className="w-full aspect-[16/9] bg-cover bg-center"
-                  style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/news-poster-featured.jpg)` }}
-                />
+                <div className="w-full aspect-[16/9] relative bg-black">
+                  <img
+                    src={featuredImage}
+                    alt={featuredTitle}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                 {/* 角标 */}
-                <div className="absolute top-4 left-4 flex gap-2">
-                  <span className="px-2.5 py-1 rounded-full bg-[hsl(50_100%_70%)] text-black text-xs font-medium">
-                    跨境GEO
-                  </span>
-                  <span className="px-2.5 py-1 rounded-full bg-[hsl(50_100%_70%)] text-black text-xs font-medium">
-                    AI营销
-                  </span>
-                  <span className="px-2.5 py-1 rounded-full bg-[hsl(50_100%_70%)] text-black text-xs font-medium">
-                    算法动态
-                  </span>
+                <div className="absolute top-4 left-4 flex gap-2 flex-wrap">
+                  {featuredTags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-1 rounded-full bg-[hsl(50_100%_70%)] text-black text-xs font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="text-white text-lg font-semibold mb-2">今日精选速递</p>
+                  <p className="text-white text-lg font-semibold mb-2">{featuredTitle}</p>
                   <p className="text-gray-400 text-sm">每日定时更新行业干货、平台新规、营销趋势</p>
                 </div>
               </motion.div>
