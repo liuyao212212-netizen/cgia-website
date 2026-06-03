@@ -75,7 +75,7 @@ export default function NewsPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-base md:text-xl text-[hsl(50_100%_70%)] max-w-2xl mx-auto leading-relaxed"
             >
-              资讯速递，一站式掌握全球数字营销风向
+              一站式掌握全球数字营销风向
             </motion.p>
           </div>
         </div>
