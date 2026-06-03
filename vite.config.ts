@@ -6,5 +6,4 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: '/cgia-website/',
-  // 部署到阿里云时改为 '/'
 })
