@@ -4,6 +4,8 @@ import { X, ZoomIn } from 'lucide-react'
 import AnimatedSection from '../../components/AnimatedSection'
 import { api, type ApiNewsItem, API_BASE } from '../../api'
 
+const THUMB = import.meta.env.BASE_URL + 'images/news-thumb-default.jpg'
+
 // Fallback 数据 - API 不可用时使用
 const fallbackPosts = [
   {
@@ -11,6 +13,7 @@ const fallbackPosts = [
     date: '2026-06-03',
     title: 'AI营销+GEO资讯速递',
     poster: import.meta.env.BASE_URL + 'images/news-daily-20260603.jpg',
+    thumbnail: THUMB,
     tags: ['AI营销', '算法动态'],
   },
   {
@@ -18,6 +21,7 @@ const fallbackPosts = [
     date: '2026-06-02',
     title: 'AI搜索算法大洗牌，GEO从业者必读',
     poster: import.meta.env.BASE_URL + 'images/news-daily-20260602.jpg',
+    thumbnail: THUMB,
     tags: ['算法动态', 'AI营销'],
   },
   {
@@ -25,6 +29,7 @@ const fallbackPosts = [
     date: '2026-06-01',
     title: '跨境GEO实战：从0到1的品牌出海策略',
     poster: import.meta.env.BASE_URL + 'images/news-daily-20260601.jpg',
+    thumbnail: THUMB,
     tags: ['跨境GEO'],
   },
   {
@@ -32,6 +37,7 @@ const fallbackPosts = [
     date: '2026-05-31',
     title: '各大平台收录规则本周变动汇总',
     poster: import.meta.env.BASE_URL + 'images/news-daily-20260531.jpg',
+    thumbnail: THUMB,
     tags: ['算法动态'],
   },
 ]
@@ -40,17 +46,19 @@ interface DisplayPost {
   id: string
   date: string
   title: string
-  poster: string
+  poster: string  // 点击放大用的实际海报
+  thumbnail: string // 卡片显示的统一缩略图
   tags: string[]
 }
 
 function toDisplayPost(item: ApiNewsItem): DisplayPost {
+  const poster = item.image.startsWith('http') ? item.image : `${API_BASE}${item.image}`
   return {
     id: String(item.id),
     date: item.date,
     title: item.title,
-    // API 返回的 image 是 /uploads/xxx.jpg，需拼接 API_BASE
-    poster: item.image.startsWith('http') ? item.image : `${API_BASE}${item.image}`,
+    poster,
+    thumbnail: THUMB, // 统一缩略图
     tags: item.tags,
   }
 }
@@ -130,10 +138,10 @@ export default function NewsPage() {
                   className="relative rounded-2xl overflow-hidden glass-card group cursor-pointer"
                   onClick={() => setPreviewImage(post.poster)}
                 >
-                  {/* 海报图 */}
+                  {/* 统一缩略图 */}
                   <div className="w-full aspect-[16/9] relative bg-black">
                     <img
-                      src={post.poster}
+                      src={post.thumbnail}
                       alt={post.title}
                       className="absolute inset-0 w-full h-full object-cover"
                       loading="lazy"
