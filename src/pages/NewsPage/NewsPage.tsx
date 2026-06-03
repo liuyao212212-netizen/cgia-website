@@ -7,6 +7,13 @@ import { api, type ApiNewsItem, API_BASE } from '../../api'
 // Fallback 数据 - API 不可用时使用
 const fallbackPosts = [
   {
+    id: '2026-06-03',
+    date: '2026-06-03',
+    title: 'AI营销+GEO资讯速递',
+    poster: import.meta.env.BASE_URL + 'images/news-daily-20260603.jpg',
+    tags: ['AI营销', '算法动态'],
+  },
+  {
     id: '2026-06-02',
     date: '2026-06-02',
     title: 'AI搜索算法大洗牌，GEO从业者必读',

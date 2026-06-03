@@ -18,13 +18,13 @@ export default function NewsSection() {
     loadLatest()
   }, [])
 
-  // 精选速递海报图：API 有数据就用最新的，没有就用默认
+  // 精选速递海报图：API 有数据就用最新的，没有就用今日海报
   const featuredImage = latestPost
     ? (latestPost.image.startsWith('http') ? latestPost.image : `${API_BASE}${latestPost.image}`)
-    : `${import.meta.env.BASE_URL}images/news-poster-featured.jpg`
+    : `${import.meta.env.BASE_URL}images/news-daily-20260603.jpg`
 
-  const featuredTitle = latestPost?.title || '今日精选速递'
-  const featuredTags = latestPost?.tags || ['跨境GEO', 'AI营销', '算法动态']
+  const featuredTitle = latestPost?.title || 'AI营销+GEO资讯速递'
+  const featuredTags = latestPost?.tags || ['AI营销', '算法动态']
 
   return (
     <section className="relative py-20 md:py-32 overflow-hidden">
