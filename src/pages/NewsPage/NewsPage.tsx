@@ -49,11 +49,15 @@ export default function NewsPage() {
   return (
     <div>
       {/* Hero - 主海报横幅 */}
-      <section className="relative overflow-hidden">
-        <div
-          className="w-full aspect-[21/9] md:aspect-[3/1] bg-cover bg-center"
-          style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/news-poster-main.jpg)` }}
-        />
+      <section className="relative overflow-hidden bg-black">
+        <div className="w-full aspect-[21/9] md:aspect-[3/1] relative">
+          <img
+            src={`${import.meta.env.BASE_URL}images/news-poster-main.jpg`}
+            alt="GEO每日资讯速递"
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center px-4">

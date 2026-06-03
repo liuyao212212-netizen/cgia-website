@@ -26,12 +26,16 @@ export default function NewsSection() {
 
         {/* 主海报 - 全屏展示 */}
         <AnimatedSection delay={0.1}>
-          <div className="relative rounded-2xl overflow-hidden mb-8 group cursor-pointer">
-            <div
-              className="w-full aspect-[16/7] md:aspect-[21/9] bg-cover bg-center"
-              style={{ backgroundImage: `url(${import.meta.env.BASE_URL}images/news-poster-main.jpg)` }}
-            />
-            {/* 海报遮罩 - 无图时显示占位 */}
+          <div className="relative rounded-2xl overflow-hidden mb-8 group cursor-pointer bg-black">
+            <div className="w-full aspect-[16/7] md:aspect-[21/9] relative">
+              <img
+                src={`${import.meta.env.BASE_URL}images/news-poster-main.jpg`}
+                alt="GEO每日资讯速递"
+                className="absolute inset-0 w-full h-full object-cover"
+                loading="eager"
+              />
+            </div>
+            {/* 海报遮罩 */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
               <p className="text-sm md:text-base text-[hsl(50_100%_70%)] font-medium mb-2">
