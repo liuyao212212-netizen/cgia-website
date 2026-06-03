@@ -53,7 +53,7 @@ export default function NewsPage() {
         <div className="w-full aspect-[21/9] md:aspect-[3/1] relative">
           <img
             src={`${import.meta.env.BASE_URL}images/news-poster-main.jpg`}
-            alt="GEO每日资讯速递"
+            alt="资讯速递"
             className="absolute inset-0 w-full h-full object-cover"
             loading="eager"
           />
@@ -67,7 +67,7 @@ export default function NewsPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-3xl md:text-6xl font-bold text-[hsl(50_100%_70%)] mb-4"
             >
-              GEO每日资讯速递
+              资讯速递
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -75,7 +75,7 @@ export default function NewsPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-base md:text-xl text-[hsl(50_100%_70%)] max-w-2xl mx-auto leading-relaxed"
             >
-              GEO每日资讯速递，一站式掌握全球数字营销风向
+              资讯速递，一站式掌握全球数字营销风向
             </motion.p>
           </div>
         </div>
@@ -84,7 +84,7 @@ export default function NewsPage() {
       {/* 主slogan */}
       <section className="py-8 border-b border-white/5">
         <p className="text-center text-gray-400 text-sm md:text-base">
-          GEO每日资讯速递，一站式掌握全球数字营销风向
+          资讯速递，一站式掌握全球数字营销风向
         </p>
       </section>
 

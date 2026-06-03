@@ -17,7 +17,7 @@ export default function NewsSection() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-[hsl(50_100%_70%)] mb-4">
-            GEO每日资讯速递
+            资讯速递
           </h2>
           <p className="text-base md:text-lg text-[hsl(50_100%_70%)] max-w-2xl mx-auto leading-relaxed">
             聚焦GEO&AI营销全行业前沿资讯
@@ -30,7 +30,7 @@ export default function NewsSection() {
             <div className="w-full aspect-[16/7] md:aspect-[21/9] relative">
               <img
                 src={`${import.meta.env.BASE_URL}images/news-poster-main.jpg`}
-                alt="GEO每日资讯速递"
+                alt="资讯速递"
                 className="absolute inset-0 w-full h-full object-cover"
                 loading="eager"
               />
@@ -39,7 +39,7 @@ export default function NewsSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
               <p className="text-sm md:text-base text-[hsl(50_100%_70%)] font-medium mb-2">
-                GEO每日资讯速递
+                资讯速递
               </p>
               <p className="text-white/70 text-xs md:text-sm">
                 一站式掌握全球数字营销风向

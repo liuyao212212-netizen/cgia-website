@@ -32,7 +32,7 @@ export default function Layout() {
     { label: '首页', to: '/' },
     { label: '关于CGIA', to: '/about' },
     { label: '会员中心', to: '/membership' },
-    { label: 'GEO每日资讯速递', to: '/news' },
+    { label: '资讯速递', to: '/news' },
   ]
 
   const isActivePath = (path: string) => {
